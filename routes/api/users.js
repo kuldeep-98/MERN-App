@@ -42,7 +42,7 @@ async (req,res) => {
             s: '200',
             r: 'pg',
             d: 'mm'
-        })
+        });
 
         user = new User({
             name,
