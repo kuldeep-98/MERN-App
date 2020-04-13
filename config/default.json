@@ -1,4 +1,6 @@
 {
     "mongoURI": "mongodb+srv://kuldeep-98:ksb123@devconnector-2wbty.mongodb.net/test?retryWrites=true&w=majority",
-    "jwtSecret": "TheMartian"
+    "jwtSecret": "TheMartian",
+    "githubClientId": "6b2c47ee6b10ee96c5f5",
+    "githubSecret": "22351c8abdfc98225d743dcbbf54bcd05bd5c9cf"
 }

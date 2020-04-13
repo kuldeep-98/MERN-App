@@ -56,7 +56,8 @@ async (req,res) => {
         user.password = await bcrypt.hash(password, salt);
 
         await user.save();
-
+        //genrate token
+        //token payload,secret,
         const payload = {
             user: {
                 id: user.id
