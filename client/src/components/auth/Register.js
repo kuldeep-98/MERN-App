@@ -1,7 +1,10 @@
 import React, { Fragment, useState } from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { setAlert } from '../../actions/alert';
+import PropTypes from 'prop-types'
 
-const Register = () => {
+const Register = ({ setAlert })=> {
 
     const [formData, setFormData] = useState({
         name: '',
@@ -17,7 +20,7 @@ const Register = () => {
     const onSubmit = async e => {
         e.preventDefault();
         if (password !== password2) {
-            console.log('Passwords do not match');
+            setAlert('Password do not match', 'danger');
         } else {
             console.log('SUCCESS');
             // const newUser = {
@@ -41,8 +44,7 @@ const Register = () => {
             //     console.log(err.response.data);
             // }
         }
-    }
-
+    }; 
     return (
         <Fragment>
             <h1 className="large text-primary">Sign Up</h1>
@@ -53,10 +55,8 @@ const Register = () => {
                 </div>
                 <div className="form-group">
                     <input type="email" placeholder="Email Address" name="email" value={email} onChange={e => onChange(e)} required />
-                    <small className="form-text"
-                    >This site uses Gravatar so if you want a profile image, use a
-            Gravatar email</small
-                    >
+                    <small className="form-text">This site uses Gravatar so if you want a profile image, use a
+            Gravatar email</small>
                 </div>
                 <div className="form-group">
                     <input
@@ -82,9 +82,15 @@ const Register = () => {
             </form>
             <p className="my-1">
                 Already have an account? <Link to="login">Sign In</Link>
-to       </p>
+            </p>
         </Fragment>
-    )
-}
+    );   
+};
 
-export default Register
+Register.prototype = {
+    setAlert: PropTypes.func.isRequired,
+};
+
+export default connect(null, { setAlert })(Register);
+
+
