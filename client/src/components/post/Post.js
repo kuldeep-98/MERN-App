@@ -1,17 +1,25 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
+import PostItem from '../posts/PostItem';
 import { getPost } from '../../actions/post';
+import { Link } from 'react-router-dom';
 
 const Post = ({ getPost, post: { post, loading }, match }) => {
     useEffect(()=>{
         getPost(match.params.id)
     },[getPost]);
     return (
-        <div>
-            post
-        </div>
+        loading || post === null ? (<Spinner />
+        ) : (
+            <Fragment>
+                <Link to="/posts" className="btn">
+                    Back To Posts
+                </Link>
+                <PostItem post={post} showActions={false} />
+            </Fragment>
+        )
     )
 }
 
