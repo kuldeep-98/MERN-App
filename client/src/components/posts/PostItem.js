@@ -24,14 +24,14 @@ const PostItem = ({
     return (
         <div className="post bg-white p-1 my-1">
             <div>
-                <a href="profile.html">
+                <Link to={`/profile/${user}`}>
                     <img
                         className="round-img"
                         src={avatar}
                         alt=""
                     />
                     <h4>{name}</h4>
-                </a>
+                </Link>
             </div>
             <div>
                 <p className="my-1">
@@ -47,7 +47,7 @@ const PostItem = ({
                 <button onClick={e=> removeLike(_id)}  type="button" className="btn btn-light">
                     <i className="fas fa-thumbs-down"></i>
                 </button>
-                <Link to={`/post/${_id}`} className="btn btn-primary">
+                <Link to={`/posts/${_id}`} className="btn btn-primary">
                     Discussion {comments.length > 0 && (<span className='comment-count'>{comments.length}</span>)}
                 </Link>
                 {!auth.loading && user === auth.user._id && (
